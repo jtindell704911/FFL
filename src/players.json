@@ -1,0 +1,12 @@
+[
+  { "id": 1, "name": "Jalen Milroe", "team": "Alabama Crimson Tide", "position": "QB" },
+  { "id": 2, "name": "Quinn Ewers", "team": "Texas Longhorns", "position": "QB" },
+  { "id": 3, "name": "Blake Corum", "team": "Michigan Wolverines", "position": "RB" },
+  { "id": 4, "name": "TreVeyon Henderson", "team": "Ohio State Buckeyes", "position": "RB" },
+  { "id": 5, "name": "Marvin Harrison Jr.", "team": "Ohio State Buckeyes", "position": "WR" },
+  { "id": 6, "name": "Rome Odunze", "team": "Washington Huskies", "position": "WR" },
+  { "id": 7, "name": "Brock Bowers", "team": "Georgia Bulldogs", "position": "TE" },
+  { "id": 8, "name": "Will Shipley", "team": "Clemson Tigers", "position": "RB" },
+  { "id": 9, "name": "Drake Maye", "team": "North Carolina Tar Heels", "position": "QB" },
+  { "id": 10, "name": "Emeka Egbuka", "team": "Ohio State Buckeyes", "position": "WR" }
+]
