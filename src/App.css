@@ -72,6 +72,10 @@ select {
   background: #f6f8fa;
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  color: #222;
+}
+.team-details h2, .team-details h3, .team-details ul, .team-details li, .team-details p {
+  color: #222;
 }
 .player-list {
   list-style: none;
@@ -84,11 +88,92 @@ select {
   border-radius: 6px;
   display: flex;
   align-items: center;
+  color: #222;
+  font-size: 1.1rem;
 }
 .player-list label {
   cursor: pointer;
   width: 100%;
+  color: #222;
 }
 .player-list input[type="checkbox"] {
   margin-right: 12px;
+}
+
+.auth-form {
+  max-width: 350px;
+  margin: 60px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  text-align: center;
+}
+.auth-form input {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+.auth-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #2d3a4b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.toggle-auth {
+  background: none;
+  color: #2d3a4b;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.error {
+  color: #c00;
+  margin-top: 10px;
+}
+.logout-btn {
+  background: #c00;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.save-btn {
+  background: #2d3a4b;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 16px;
+  cursor: pointer;
+}
+.success {
+  color: #2d3a4b;
+  font-weight: bold;
+  margin-top: 12px;
+}
+.position-group {
+  margin-bottom: 24px;
+}
+.position-group h3 {
+  color: #2d3a4b;
+  margin-bottom: 8px;
+}
+.position-group .position-info {
+  color: #444;
+  font-size: 0.98rem;
+  margin-bottom: 8px;
 }
