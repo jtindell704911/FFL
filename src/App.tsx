@@ -76,6 +76,8 @@ function App() {
     WR: 2,
     RB: 2,
     TE: 1,
+    DST: 1,
+    K: 1,
   };
 
   // Group players by position
@@ -86,7 +88,7 @@ function App() {
 
   // Track selected players by position
   const [selectedByPosition, setSelectedByPosition] = useState<Record<string, number[]>>({
-    QB: [], WR: [], RB: [], TE: []
+    QB: [], WR: [], RB: [], TE: [], DST: [], K: []
   });
 
   const handlePlayerSelect = (pos: string, playerId: number) => {
@@ -147,13 +149,23 @@ function App() {
       {!Object.values(savedTeam).some(arr => arr.length) ? (
         <>
           <h2>Pick Your Fantasy Team</h2>
+          <div className="instructions">
+            <p>
+              Select exactly 2 QBs, 2 WRs, 2 RBs, 1 TE, and <b>1 Defense/Special Teams (DST)</b> for your team. DST options are listed by team name.
+            </p>
+          </div>
+          <div className="save-status">
+            <span className="status-indicator not-saved">Team not saved yet.</span>
+          </div>
           {Object.keys(positionLimits).map((pos) => (
             <div key={pos} className="position-group">
               <h3>{pos} ({positionLimits[pos]}):</h3>
               <div className="position-info">
-                {positionLimits[pos] === 2
-                  ? `Select exactly 2 players for the ${pos} position.`
-                  : `Select exactly 1 player for the ${pos} position.`}
+                {pos === 'DST'
+                  ? 'Select exactly 1 Defense/Special Teams (DST) for your team.'
+                  : positionLimits[pos] === 2
+                    ? `Select exactly 2 players for the ${pos} position.`
+                    : `Select exactly 1 player for the ${pos} position.`}
               </div>
               <ul className="player-list">
                 {groupedPlayers[pos].map((player) => (
@@ -180,19 +192,35 @@ function App() {
           )}
         </>
       ) : (
-        <div className="team-details">
+        <div className="team-details compact">
           <h2>Your Team: {authTeam}</h2>
-          <h3>Selected Players:</h3>
-          <ul>
+          <div className="save-status">
+            <span className="status-indicator saved">Team saved!</span>
+          </div>
+          <div className="compact-team-list">
             {Object.entries(savedTeam).map(([pos, ids]) =>
               ids.map((id) => {
                 const player = players.find((p) => p.id === id);
                 return player ? (
-                  <li key={id}>{pos}: {player.name} ({player.team})</li>
+                  <span key={id} className="compact-player">
+                    <b>{pos}</b>: {player.name} <span className="compact-team">({player.team})</span>
+                  </span>
                 ) : null;
               })
             )}
-          </ul>
+          </div>
+          <button className="delete-team-btn" onClick={() => {
+            setSavedTeam({});
+            setSelectedByPosition({ QB: [], WR: [], RB: [], TE: [], DST: [] });
+            // Optionally, clear on backend as well
+            fetch('http://localhost:4000/save-team', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ teamName: authTeam, teamPlayers: { QB: [], WR: [], RB: [], TE: [], DST: [] } })
+            });
+          }}>
+            Delete Team & Rechoose
+          </button>
         </div>
       )}
     </div>
